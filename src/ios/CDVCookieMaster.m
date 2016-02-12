@@ -71,7 +71,8 @@
         [cookieProperties setObject:jsonCookies[key] forKey:NSHTTPCookieValue];
         [cookieProperties setObject:urlString forKey:NSHTTPCookieOriginURL];
         [cookieProperties setObject:@"/" forKey:NSHTTPCookiePath];
-        [cookieProperties setObject:expiry forKey:NSHTTPCookieExpires   ];
+        [cookieProperties setObject:expiry forKey:NSHTTPCookieExpires];
+        [cookieProperties setValue:@YES forKey:NSHTTPCookieSecure];
 
         cookie = [NSHTTPCookie cookieWithProperties:cookieProperties];
         [storage setCookie:cookie];
@@ -130,6 +131,7 @@
     [cookieProperties setObject:cookieValue forKey:NSHTTPCookieValue];
     [cookieProperties setObject:urlString forKey:NSHTTPCookieOriginURL];
     [cookieProperties setObject:@"/" forKey:NSHTTPCookiePath];
+    [cookieProperties setValue:@YES forKey:NSHTTPCookieSecure];
 
     NSHTTPCookie *cookie = [NSHTTPCookie cookieWithProperties:cookieProperties];
     [[NSHTTPCookieStorage sharedHTTPCookieStorage] setCookie:cookie];
